@@ -1,6 +1,4 @@
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="launcher_background">#FF000000</color>
     <color name="municipality_beijing">#FFC62828</color>
     <color name="municipality_shanghai">#FFB00070</color>

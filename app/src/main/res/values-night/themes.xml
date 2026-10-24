@@ -1,3 +1,5 @@
 <resources>
-    <style name="Base.Theme.PracticalFive" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="Base.Theme.PracticalFive" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/color_default_background</item>
+    </style>
 </resources>
