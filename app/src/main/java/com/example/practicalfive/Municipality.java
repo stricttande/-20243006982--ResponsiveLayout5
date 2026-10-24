@@ -1,11 +1,14 @@
 package com.example.practicalfive;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class Municipality extends AppCompatActivity {
     public static final String EXTRA_MUNICIPALITY = "com.example.practicalfive.MUNICIPALITY";
@@ -13,10 +16,19 @@ public class Municipality extends AppCompatActivity {
     private static final class MunicipalityContent {
         final int summaryIndex;
         final int imageResource;
+        final int colorResource;
+        final int foregroundColorResource;
 
-        MunicipalityContent(int summaryIndex, int imageResource) {
+        MunicipalityContent(
+                int summaryIndex,
+                int imageResource,
+                int colorResource,
+                int foregroundColorResource
+        ) {
             this.summaryIndex = summaryIndex;
             this.imageResource = imageResource;
+            this.colorResource = colorResource;
+            this.foregroundColorResource = foregroundColorResource;
         }
     }
 
@@ -44,25 +56,41 @@ public class Municipality extends AppCompatActivity {
         TextView nameView = findViewById(R.id.municipalityName);
         ImageView imageView = findViewById(R.id.municipalityImage);
         TextView informationView = findViewById(R.id.informationText);
+        Button visitSiteButton = findViewById(R.id.visitSiteButton);
+        int municipalityColor = ContextCompat.getColor(this, content.colorResource);
+        int foregroundColor = ContextCompat.getColor(this, content.foregroundColorResource);
 
         nameView.setText(municipalityName);
+        nameView.setBackgroundColor(municipalityColor);
+        nameView.setTextColor(foregroundColor);
         imageView.setImageResource(content.imageResource);
         imageView.setContentDescription(
                 getString(R.string.city_image_description_named, municipalityName)
         );
         informationView.setText(summaries[content.summaryIndex]);
+        informationView.setTextColor(municipalityColor);
+        visitSiteButton.setBackgroundTintList(ColorStateList.valueOf(municipalityColor));
+        visitSiteButton.setTextColor(foregroundColor);
     }
 
     private MunicipalityContent getContentFor(String municipalityName) {
         switch (municipalityName) {
             case "Beijing":
-                return new MunicipalityContent(0, R.drawable.beijing);
+                return new MunicipalityContent(
+                        0, R.drawable.beijing, R.color.municipality_beijing, R.color.color_text_light
+                );
             case "Shanghai":
-                return new MunicipalityContent(1, R.drawable.shanghai);
+                return new MunicipalityContent(
+                        1, R.drawable.shanghai, R.color.municipality_shanghai, R.color.color_text_light
+                );
             case "Chongqing":
-                return new MunicipalityContent(2, R.drawable.chongqing);
+                return new MunicipalityContent(
+                        2, R.drawable.chongqing, R.color.municipality_chongqing, R.color.color_text_dark
+                );
             case "Tianjin":
-                return new MunicipalityContent(3, R.drawable.tianjin);
+                return new MunicipalityContent(
+                        3, R.drawable.tianjin, R.color.municipality_tianjin, R.color.color_text_light
+                );
             default:
                 return null;
         }
