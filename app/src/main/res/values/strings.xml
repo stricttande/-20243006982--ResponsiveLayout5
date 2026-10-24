@@ -7,5 +7,6 @@
     <string name="invalid_municipality_message">This municipality could not be opened. Return and try again.</string>
     <string name="map_content_description">Map of China highlighting Beijing, Shanghai, Tianjin, and Chongqing</string>
     <string name="city_image_description">Photograph of the selected municipality</string>
+    <string name="city_image_description_named">Photograph of %1$s</string>
     <string name="visit_site">Visit site</string>
 </resources>
