@@ -1,6 +1,9 @@
 package com.example.practicalfive;
 
+import android.content.ActivityNotFoundException;
 import android.content.res.ColorStateList;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -71,6 +74,7 @@ public class Municipality extends AppCompatActivity {
         informationView.setTextColor(municipalityColor);
         visitSiteButton.setBackgroundTintList(ColorStateList.valueOf(municipalityColor));
         visitSiteButton.setTextColor(foregroundColor);
+        visitSiteButton.setOnClickListener(view -> openOfficialWebsite(municipalityName));
     }
 
     private MunicipalityContent getContentFor(String municipalityName) {
@@ -99,5 +103,33 @@ public class Municipality extends AppCompatActivity {
     private void closeForInvalidMunicipality() {
         Toast.makeText(this, R.string.invalid_municipality_message, Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    private void openOfficialWebsite(String municipalityName) {
+        String websiteUrl;
+        switch (municipalityName) {
+            case "Beijing":
+                websiteUrl = "https://english.beijing.gov.cn/";
+                break;
+            case "Shanghai":
+                websiteUrl = "https://english.shanghai.gov.cn/";
+                break;
+            case "Chongqing":
+                websiteUrl = "https://english.cq.gov.cn/";
+                break;
+            case "Tianjin":
+                websiteUrl = "https://en.tj.gov.cn/";
+                break;
+            default:
+                closeForInvalidMunicipality();
+                return;
+        }
+
+        Intent websiteIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(websiteUrl));
+        try {
+            startActivity(websiteIntent);
+        } catch (ActivityNotFoundException exception) {
+            Toast.makeText(this, R.string.website_unavailable, Toast.LENGTH_SHORT).show();
+        }
     }
 }

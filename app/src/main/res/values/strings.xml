@@ -9,4 +9,5 @@
     <string name="city_image_description">Photograph of the selected municipality</string>
     <string name="city_image_description_named">Photograph of %1$s</string>
     <string name="visit_site">Visit site</string>
+    <string name="website_unavailable">No app can open this website.</string>
 </resources>
