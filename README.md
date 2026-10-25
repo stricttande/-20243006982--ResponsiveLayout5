@@ -15,7 +15,7 @@ The four summaries are approximately 80-120 words and follow the required array 
 - [Chongqing overview](https://english.cq.gov.cn/aboutchongqing/overview/202606/t20260608_15735716.html)
 - [Tianjin historical origins](https://en.tj.gov.cn/tianjininfo/profile/202312/t20231225_6489676.html)
 
-The supplied map asset is a PNG, so it is kept as `chinese_municipalities.png` in `res/drawable/` instead of being renamed to a misleading JPG extension. The four supplied city photographs are included unchanged.
+The supplied map is a PNG in the resource archive; it is converted to `chinese_municipalities.jpg` in `res/drawable/` to match the required resource filename. The four supplied city photographs are included unchanged.
 
 ## Build and test
 
